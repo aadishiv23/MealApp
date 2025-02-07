@@ -11,7 +11,7 @@ import SwiftUI
 struct FchMealsAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RecipeListView()
         }
     }
 }

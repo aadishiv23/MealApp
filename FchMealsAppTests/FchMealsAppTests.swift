@@ -7,11 +7,21 @@
 
 import Testing
 @testable import FchMealsApp
+import Foundation
 
-struct FchMealsAppTests {
-
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+struct RecipeServiceTests  {
+    @Test
+    func testFetchRecipesSuccess() async throws {
+        let recipes = try await RecipeService.shared.fetchRecipes()
+        #expect(!recipes.isEmpty)
     }
 
+    @Test
+    func testImageCaching() async throws {
+        let imageCache = ImageCache.shared
+        let imageURL = URL(string: "https://some.url/small.jpg")!
+
+        let image = await imageCache.loadImage(from: imageURL)
+        #expect(image != nil)
+    }
 }
